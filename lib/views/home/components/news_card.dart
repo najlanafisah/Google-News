@@ -1,0 +1,123 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:news_app/models/news_articles,.dart';
+import 'package:news_app/utils/app_colors.dart';
+import 'package:timeago/timeago.dart' as timeago;
+
+class NewsCard extends StatelessWidget {
+  final NewsArticles article;
+  final VoidCallback onTap;
+
+  const NewsCard({super.key, required this.article, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      // InkWell adalah animasi untuk menampilkan objek yang ada dallam card biar di match sama shimmer, intinya biar satu kesatuan dari gambar dan animasinya, biar smooth
+      onTap: onTap,
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // image
+            if (article.urlToImage != null)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: CachedNetworkImage(
+                  imageUrl: article.urlToImage!,
+                  height: 200,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => Container(
+                    // ini biar kalo misal gaada gambarnya nanati kyk ada gambar terus retak gitu biar maksudnya gambarnya gaada
+                    height: 200,
+                    color: AppColors.divider,
+                    child: Center(child: CircularProgressIndicator()),
+                  ),
+                  // membuat error widget (untuk image)
+                  errorWidget: (context, url, error) => Container(
+                    height: 200,
+                    color: AppColors.divider,
+                    child: Center(
+                      child: Icon(
+                        Icons.image_not_supported,
+                        size: 40,
+                        color: AppColors.textHint,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+        
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // source news and date
+                  if (article.source?.name != null) ...[
+                    Text(
+                      article.source!.name!,
+                      style: TextStyle(
+                        color: AppColors.primary,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                  SizedBox(height: 12),
+        
+                  // title
+                  if (article.title != null)
+                    Text(
+                      article.title!,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textPrimary,
+                        height: 1.3,
+                      ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  SizedBox(height: 8),
+        
+                  // description
+                  if (article.description != null)
+                    Text(
+                      article.description!,
+                      style: TextStyle(
+                        color: AppColors.textSecondary,
+                        fontSize: 14,
+                        height: 1.4,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  SizedBox(height: 8),
+        
+                  // timestamp
+                  if (article.publishedAt != null)
+                    Text(
+                      timeago.format(DateTime.parse(article.publishedAt!)),
+                      style: TextStyle(
+                        color: AppColors.textSecondary,
+                        fontSize: 12,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            Divider(
+              thickness: 1,
+              height: 1
+            ),
+            SizedBox(height: 16)
+          ],
+        ),
+      ),
+    );
+  }
+}
