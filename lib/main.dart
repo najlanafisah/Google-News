@@ -30,13 +30,13 @@ void main() async { // ini async karena dia mengambil data dari internet
         scaffoldBackgroundColor: AppColors.background,
         appBarTheme: AppBarTheme(
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.background,
           elevation: 0
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primary,
-            foregroundColor: Colors.white
+            backgroundColor: AppColors.button,
+            foregroundColor: AppColors.background
           )
         )
       ),
