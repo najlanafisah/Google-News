@@ -52,6 +52,49 @@ class NewsServices {
     }
   }
 
+  Future<NewsResponse> getEverything({
+    String country = Constants.defaultCountry,
+    String? category,
+    int page = 1,
+    int pageSize = 20
+    }) async {
+    try {
+      final Map<String, String> queryParams = {
+        'apiKey': _apiKey,
+        'country': country,
+        'page': page.toString(),
+        'pageSize': pageSize.toString(),
+      };
+
+      // statement yang akan dijalankan ketika category tidak kosong
+      if (category != null && category.isNotEmpty) {
+        queryParams['category'] = category;
+      }
+
+      // berfungsi untuk parsing data dari json ke ui
+      // simplenya kita daftarin baseUrl + endpoint yang akan digunakan
+      final uri = Uri.parse('$_baseUrl${Constants.everything}')
+          .replace(queryParameters: queryParams);
+      
+      // untuk menyimpan respon yang diberikan oleh server
+      final response = await http.get(uri);
+
+      // kode yang akan dijalankan jika request ke API sukses
+      if (response.statusCode == 200) {
+        // untuk mengubah data dari json ke bahasa dart
+        final jsonData = json.decode(response.body);
+        return NewsResponse.fromJson(jsonData);
+      // kode yang akan dijalankan jika requst ke API gagal atau status HTTP != 200
+      } else {
+        throw Exception('Failed to load news, please try again later.');
+      }
+      // kode dijalankan ketika error lain, selain yang sudah diatas
+      // e = error
+    } catch (e) {
+      throw Exception('Another problem occurs, please try again later.');
+    }
+  }
+
   Future<NewsResponse> searchNews({
     required String query, // ini adlaah nilai yang dimasukkan ke kolom pencarian
     int page = 1, // ini untuk mendefinisikan halaman berita ke berapa

@@ -42,13 +42,7 @@ class _LoadingShimmerState extends State<LoadingShimmer>
       padding: EdgeInsets.all(16),
       itemCount: 5,
       itemBuilder: (context, index) {
-        return Card(
-          margin: EdgeInsets.only(bottom: 16),
-          elevation: 2,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12)
-          ),
-          child: Column(
+        return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // image shimmer
@@ -58,7 +52,7 @@ class _LoadingShimmerState extends State<LoadingShimmer>
                   return Container(
                     height: 200,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                      borderRadius: BorderRadius.circular(12),
                       gradient: LinearGradient(
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
@@ -78,7 +72,7 @@ class _LoadingShimmerState extends State<LoadingShimmer>
                   );
                 },
               ),
-
+                    
               Padding(
                 padding: EdgeInsets.all(16),
                 child: Column(
@@ -98,7 +92,7 @@ class _LoadingShimmerState extends State<LoadingShimmer>
                         );
                       }
                     ),
-
+                    
                     SizedBox(height: 12),
                     
                     // title shimmer
@@ -129,9 +123,9 @@ class _LoadingShimmerState extends State<LoadingShimmer>
                         );
                       }
                     ),
-
+                    
                     SizedBox(height: 12),
-
+                    
                     // description shimmer
                     AnimatedBuilder(
                       animation: _animation,
@@ -164,7 +158,6 @@ class _LoadingShimmerState extends State<LoadingShimmer>
                 ),
               )
             ],
-          ),
         );
       }
     );

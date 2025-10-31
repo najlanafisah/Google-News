@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_app/controllers/news_controller.dart';
 import 'package:news_app/routes/app_pages.dart';
-import 'package:news_app/views/home/components/bottom_nav.dart';
-import 'package:news_app/views/home/components/category_chip.dart';
+import 'package:news_app/utils/app_colors.dart';
+import 'package:news_app/views/widgets/bottom_nav.dart';
 import 'package:news_app/views/home/components/empty_state_widget.dart';
 import 'package:news_app/views/home/components/error_state_widget.dart';
 import 'package:news_app/views/home/components/home_header.dart';
@@ -17,32 +17,10 @@ class HomeScreen extends GetView<NewsController> {
 
   @override
   Widget build(BuildContext context) {
-    int selectedIndex = 0;
     return Scaffold(
       body: Column(
         children: [
           HomeHeader(),
-          SizedBox(
-            height: 60,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              itemCount: controller.categories.length,
-              itemBuilder: (context, index) {
-                final category = controller.categories[index];
-                return Obx(
-                  () => CategoryChip(
-                    label: category.capitalize ?? category,
-                    isSelected:
-                        controller.selectedCategory ==
-                        category, // kalo dia kelipih dia bakal menampilkan category yang kepilih dan memilah datanya
-                    onTap: () => controller.selectCategory(category),
-                  ),
-                );
-              },
-            ),
-          ),
-
           // News List
           Expanded(
             child: Obx(() {
@@ -57,11 +35,13 @@ class HomeScreen extends GetView<NewsController> {
 
               if (controller.articles.isEmpty) {
                 // kalo controllernya kosong/datanya gaada
-                return const EmptyStateWidget();
+                return EmptyStateWidget();
               }
 
               return RefreshIndicator(
                 onRefresh: controller.refreshNews,
+                color: AppColors.textSecondary, // warna lingkaran spinner
+                backgroundColor: AppColors.background,
                 child: ListView.builder(
                   padding: EdgeInsets.all(1),
                   itemCount: controller.articles.length,
@@ -83,14 +63,7 @@ class HomeScreen extends GetView<NewsController> {
           SizedBox(height: 8),
         ],
       ),
-      // di sini bagian bottom nav-nya
-      bottomNavigationBar: BottomNav(
-        selectedIndex: selectedIndex,
-        onItemTapped: (index) {
-          // sementara cuma ganti print aja, biar nanti bisa dikembangin
-          debugPrint('Kamu tap index ke-$index');
-        },
-      ),
+      bottomNavigationBar: BottomNav(selectedIndex: 0),
     );
   }
 }

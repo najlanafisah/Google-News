@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:news_app/bindings/home_bindings.dart';
 import 'package:news_app/views/detail/news_detail_screen.dart';
+import 'package:news_app/views/headlines/headlines_screen.dart';
 import 'package:news_app/views/home/home_screen.dart';
 import 'package:news_app/views/splash_screen.dart';
 
@@ -24,6 +25,10 @@ class AppPages {
     GetPage(
       name: _Paths.NEWS_DETAIL,
       page: () => NewsDetailScreen()
-    )
+    ),
+    GetPage(
+      name: _Paths.HEADLINES,
+      page: () => HeadlinesScreen(),
+    ),
   ];
 }

@@ -10,8 +10,6 @@ class EmptyStateWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.newspaper, size: 64, color: AppColors.textHint),
-          SizedBox(height: 16),
           Text(
             'No news available',
             style: TextStyle(
@@ -25,6 +23,11 @@ class EmptyStateWidget extends StatelessWidget {
             'Please try again later',
             style: TextStyle(color: AppColors.textSecondary),
           ),
+          SizedBox(height: 32),
+          Image.asset(
+            'no-news-avail.png',
+            height: 180,
+            )
         ],
       ),
     );

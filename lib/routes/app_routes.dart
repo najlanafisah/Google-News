@@ -8,6 +8,7 @@ abstract class Routes {
   static const SPLASH = _Paths.SPLASH;
   static const HOME = _Paths.HOME;
   static const NEWS_DETAIL = _Paths.NEWS_DETAIL;
+  static const HEADLINES = _Paths.HEADLINES;
 }
 
 // pendeklarasian route dari masin2 screen
@@ -16,4 +17,5 @@ abstract class _Paths {
   static const SPLASH = '/spalsh';
   static const HOME = '/home';
   static const NEWS_DETAIL = '/news_detail';
+  static const HEADLINES = '/headlines';
 }

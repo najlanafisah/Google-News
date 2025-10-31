@@ -18,7 +18,7 @@ class Constants {
     'sports',
     'health',
     'science',
-    'entertaiment',
+    'entertainment',
   ];
 
   // countries

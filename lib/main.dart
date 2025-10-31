@@ -23,7 +23,7 @@ void main() async { // ini async karena dia mengambil data dari internet
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'News App',
+      title: 'Google News App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: AppColors.primary,
@@ -38,10 +38,14 @@ void main() async { // ini async karena dia mengambil data dari internet
             backgroundColor: AppColors.button,
             foregroundColor: AppColors.background
           )
+        ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: AppColors.background
         )
       ),
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      defaultTransition: Transition.fadeIn,
       initialBinding: AppBindings(),
       debugShowCheckedModeBanner: false,
     );

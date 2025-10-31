@@ -10,7 +10,7 @@ class HomeHeader extends GetView<NewsController> {
     final TextEditingController searchController = TextEditingController();
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

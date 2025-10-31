@@ -76,7 +76,7 @@ class _ImageAppBarState extends State<ImageAppBar> {
                     value: 'copy_link',
                     child: Row(
                       children: [
-                        Icon(Icons.copy),
+                        Icon(Icons.copy, color: AppColors.textSecondary,),
                         SizedBox(width: 8),
                         Text('Copy Link')
                       ],
@@ -86,7 +86,7 @@ class _ImageAppBarState extends State<ImageAppBar> {
                     value: 'open_browser',
                     child: Row(
                       children: [
-                        Icon(Icons.open_in_browser),
+                        Icon(Icons.open_in_browser, color: AppColors.textSecondary,),
                         SizedBox(width: 8),  // ini bisa jadi error
                         Text('Open in Browser')
                       ],
