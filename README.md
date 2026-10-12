@@ -1,16 +1,84 @@
-# news_app
+# Google News
 
-A new Flutter project.
+A Flutter-based news application that allows users to browse news articles, explore content, and share news through a mobile-friendly interface.
+
+## Features
+
+- Browse news articles
+- Load article images efficiently
+- Open article links in a browser
+- Share news articles
+- Display relative publication times
+- Manage application navigation
+
+## Tech Stack
+
+- **Flutter**: Cross-platform application development
+- **Dart**: Programming language
+- **GetX**: State management and navigation
+- **HTTP**: API requests
+- **Cached Network Image**: Image loading and caching
+- **URL Launcher**: Open external links
+- **Share Plus**: Share news articles
+- **Timeago**: Relative time formatting
+- **Intl**: Date and time formatting
+- **Flutter Dotenv**: Environment variable configuration
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK
+- Dart SDK
+- Android Studio or Visual Studio Code
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/najlanafisah/Google-News.git
+   cd Google-News
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   flutter pub get
+   ```
+
+3. Configure the required environment variables in the `.env` file.
+
+4. Run the application:
+
+   ```bash
+   flutter run
+   ```
+
+## Project Structure
+
+```text
+Google-News/
+├── android/              # Android configuration
+├── assets/               # Application assets
+├── ios/                  # iOS configuration
+├── lib/                  # Main application source code
+├── linux/                # Linux configuration
+├── macos/                # macOS configuration
+├── test/                 # Application tests
+├── web/                  # Web configuration
+├── windows/              # Windows configuration
+├── .env                  # Environment configuration
+├── analysis_options.yaml # Dart analysis settings
+├── pubspec.yaml          # Dependencies and project settings
+├── pubspec.lock          # Locked dependency versions
+└── README.md             # Project documentation
+```
+
+## Project Status
+
+A Flutter project focused on browsing and sharing news content.
+
+## License
+
+No license has been specified for this repository.
